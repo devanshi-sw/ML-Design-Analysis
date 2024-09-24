@@ -7,21 +7,32 @@ uploaded = files.upload()
 
 import io
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import gensim
+from gensim 
+import corpora
+import nltk from nltk.stem import WordNetLemmatizer, SnowballStemmer
+from gensim.models.ldamulticore import LdaMulticore
+from wordcloud import WordCloud
+from gensim.models import CoherenceModel
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics import silhouette_score
+from google.colab import files
 
-# Assuming  the file named 'designtextdata.csv'
+# File named in this project 'designtextdata.csv'
 df = pd.read_csv(io.BytesIO(uploaded['designtextdata.csv']))
 print(df.head())
 
-import gensim
-from gensim.utils import simple_preprocess
-from gensim.parsing.preprocessing import STOPWORDS
-from nltk.stem import WordNetLemmatizer, SnowballStemmer
-from nltk.stem.porter import *
-import numpy as np
-import nltk
+# Text Processing Functions
 nltk.download('wordnet')
 
-# Function to perform lemmatize and stem preprocessing steps on the data set.
+from gensim.utils import simple_preprocess
+from gensim.parsing.preprocessing import STOPWORDS
+from nltk.stem.porter import *
+
+#  lemmatize and stem preprocessing steps 
 def lemmatize_stemming(text):
     stemmer = SnowballStemmer('english')
     return stemmer.stem(WordNetLemmatizer().lemmatize(text, pos='v'))
@@ -38,10 +49,6 @@ processed_data = df['Problemstatements'].map(preprocess)
 
 # Check processed data
 print(processed_data.head())
-
-!pip install --upgrade pandas
-
-import pandas as pd
 
 df['processed_data'] = processed_data
 df.to_csv('preprocessed_data.csv', index=False)
@@ -69,7 +76,6 @@ lda_model = LdaMulticore(corpus=corpus, id2word=id2word, num_topics=20, passes=1
 for idx, topic in lda_model.print_topics(-1):
     print('Topic: {} \nWords: {}'.format(idx, topic))
 
-
 def display_topics(topics):
     for topic in topics:
         print(f"Topic {topic['Topic']}:")
@@ -78,8 +84,6 @@ def display_topics(topics):
         print()
 
 display_topics(topics)
-
-import pandas as pd
 
 # Get the dominant topic for each document
 def get_dominant_topic(lda_model, corpus, texts):

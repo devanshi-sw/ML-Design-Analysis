@@ -14,8 +14,10 @@ The project employs topic modeling techniques such as Latent Dirichlet Allocatio
    git clone https://github.com/yourusername/ML-Design-Analysis.git
 2. Install dependencies:  
    pip install -r requirements.txt
-3. Run the models on the dataset.
-
+3. Run the models on the dataset:
+   - `python lda_model.py` for LDA
+   - `python hdp_model.py` for HDP
+   - `python gsdmm_model.py` for GSDMM
 # Tech Stack
 - Python
 - Libraries: scikit-learn, gensim, pandas, matplotlib (for visualizations)

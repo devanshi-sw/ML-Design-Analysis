@@ -1,4 +1,4 @@
-# ML-Design-Analysis
+# TopicModelling
 Machine learning analysis of design challenges using topic modeling techniques
 
 This repository contains code for analyzing engineering design challenges using machine learning. 

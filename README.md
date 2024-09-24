@@ -11,7 +11,7 @@ The project employs topic modeling techniques such as Latent Dirichlet Allocatio
 
 # Project Setup
 1. Clone the repository:  
-   git clone https://github.com/yourusername/ML-Design-Analysis.git
+   git clone https://github.com/ML-Design-Analysis.git
 2. Install dependencies:  
    pip install -r requirements.txt
 3. Run the models on the dataset:
